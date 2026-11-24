@@ -30,6 +30,7 @@ TRaCE ([Olson & Ware 2022, Bioinformatics 38:261](https://pubmed.ncbi.nlm.nih.go
 | `config.sh` | Settings shared by every script: paths, the TRaCE commit, the thresholds. |
 | `manifest/` | The 30 RNA-seq samples: run accessions, read counts, tissue labels and download URLs. |
 | `logs/conda_env.txt` | The exact packages installed in the conda environment. |
+| `LICENSE` | GNU General Public License v3.0. |
 
 ### Results
 
@@ -240,3 +241,9 @@ python3 bin/compare_representative.py --trace results/TAIR12_TRaCE_output.txt \
 - `config.sh` finds the project directory from its own location. `SRC`, `MAMBA` and `SYS_PERL` default to the paths used for this run and can be set in the environment instead.
 - `config.sh` points `TMPDIR` at `tmp/` and every tool is given an explicit temporary directory, because the root filesystem of the machine used was nearly full.
 - The run left about 100 GB in the working directory, nearly all of it the alignments (57 GB) and InterProScan (42 GB). Neither is needed once the assemblies and the Pfam table exist.
+
+## License
+
+The scripts, the documentation and the result tables are released under the GNU General Public License v3.0, the license of TRaCE itself. See [`LICENSE`](LICENSE).
+
+`ref/TAIR12.trace.gff` is TAIR's gene-model annotation in another layout, and TAIR's terms of use continue to apply to it.
