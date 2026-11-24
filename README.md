@@ -1,6 +1,6 @@
 # TRaCE ranking of TAIR12 transcripts
 
-This repository holds a TRaCE run on the TAIR12 protein-coding gene models of *Arabidopsis thaliana* Col-0 (Col-CC v2 assembly): the pipeline, the ranking of every transcript, and a comparison with TAIR's representative gene models. The run was done on 2026-11-20.
+This repository holds a TRaCE run on the TAIR12 protein-coding gene models of *Arabidopsis thaliana* Col-0 (Col-CC v2 assembly): the pipeline, the files TRaCE was given, the ranking of every transcript, and a comparison with TAIR's representative gene models. The run was done on 2026-11-20.
 
 TRaCE ([Olson & Ware 2022, Bioinformatics 38:261](https://pubmed.ncbi.nlm.nih.gov/34297055/); code at https://github.com/warelab/trace) ranks the transcripts of each gene by ranked-choice voting. Each RNA-seq sample votes for the annotated transcript closest to the dominant transcript assembled from that sample. Three more voters rank the transcripts by Pfam domain coverage, CDS length and transcript length. Rank 1 is the canonical transcript.
 
@@ -25,6 +25,7 @@ TRaCE ([Olson & Ware 2022, Bioinformatics 38:261](https://pubmed.ncbi.nlm.nih.go
 |---|---|
 | `results/summary.md` | Headline numbers, checks and caveats. Start here. |
 | `results/` | The ranking, the comparisons and the QC tables (listed below). |
+| `ref/`, `domains/`, `stringtie/` | The files `TRaCE.pl` was given (listed below). |
 | `bin/` | The pipeline scripts (listed below). |
 | `config.sh` | Settings shared by every script: paths, the TRaCE commit, the thresholds. |
 | `manifest/` | The 30 RNA-seq samples: run accessions, read counts, tissue labels and download URLs. |
@@ -43,6 +44,19 @@ TRaCE ([Olson & Ware 2022, Bioinformatics 38:261](https://pubmed.ncbi.nlm.nih.go
 | `results/exact_recount.tsv` | Genes whose ranking changes when the votes are added with exact arithmetic. |
 | `results/qc_*.tsv` | Per-sample alignment and evidence numbers, the histogram of voting samples, the genes no sample voted on, and each assembly compared with TAIR12. |
 | `results/sensitivity/` | Full TRaCE output of four reruns: three with other Perl hash seeds, one counting only InterPro-integrated Pfam hits. `rank1_changes.tsv` gives the number of genes whose canonical changes in each. |
+
+### TRaCE inputs
+
+These are the files `TRaCE.pl` read, at the paths the pipeline writes them to. With them the election can be rerun without the reads or the alignments (see "Rerunning the election from a clone").
+
+| File | Contents | Size |
+|---|---|---|
+| `ref/TAIR12.trace.gff` | The TAIR12 protein-coding gene models in the form TRaCE's parser needs: 26,867 genes, 36,572 mRNAs. Made by `bin/make_trace_gff.py`. | 31 MB |
+| `domains/pfam.all.tsv` | InterProScan's Pfam output for the TAIR12 proteins, unfiltered: 59,494 hits on 31,503 proteins. The domain input of the election. | 10 MB |
+| `domains/pfam.ipr.tsv` | The 57,734 of those hits whose Pfam family is integrated into InterPro. The domain input of the `integrated_only` rerun, and of nothing else. | 9 MB |
+| `stringtie/S01_petal.gtf` ... `stringtie/S30_shoot_apex.gtf` | One StringTie assembly per tissue, 13,173 to 29,186 transcripts each. `manifest/gtfs.core30.txt` lists them in the order they were given to TRaCE. | 891 MB |
+
+A clone checks out about 1 GB, nearly all of it these assemblies. The download is much smaller, because git compresses them.
 
 ### Scripts
 
@@ -67,7 +81,7 @@ TRaCE ([Olson & Ware 2022, Bioinformatics 38:261](https://pubmed.ncbi.nlm.nih.go
 
 ## What is not here
 
-Inputs, third-party software and intermediate files are left out. The sizes are what the run left on disk.
+Raw inputs, third-party software and the intermediate files upstream of TRaCE's inputs are left out. The sizes are what the run left on disk.
 
 | Left out | Size | How to get it |
 |---|---|---|
@@ -75,9 +89,8 @@ Inputs, third-party software and intermediate files are left out. The sizes are 
 | TAIR's list of representative gene models | 0.5 MB | Obtain from TAIR. |
 | RNA-seq reads | 59 GB as `.sra` | `bin/sample_worker.sh` downloads each run and deletes it once the BAM passes its checks. |
 | Alignments (`bam/`) | 57 GB | Made by `bin/sample_worker.sh`. |
-| StringTie assemblies (`stringtie/`), 30 GTFs | 850 MB | Made by `bin/sample_worker.sh`. These are TRaCE's evidence input. |
-| Pfam hits and proteins (`domains/`) | 44 MB | Made by `bin/run_interproscan.sh`. The Pfam table is TRaCE's domain input. |
-| Reformatted GFF, alignment index, organelle sequences (`ref/`) | 530 MB | Made by the reference commands below. |
+| Protein sequences (`domains/TAIR12.pep.fa`) | 17 MB | Made by the `gffread` command below. |
+| Genome copies, alignment index, organelle sequences (`ref/`) | 530 MB | Made by the reference commands below. |
 | gffcompare output and strand counts (`qc/`), logs | 1.1 GB | Made by the scripts. The numbers are collected in `results/qc_*.tsv`. |
 | `TRaCE.pl` | 16 kB | https://github.com/warelab/trace at the commit in `config.sh`. |
 | InterProScan 5.78-109.0 | 42 GB | `bin/get_interproscan.sh`. |
@@ -161,6 +174,27 @@ What each step is for:
 - **The alignment reference** adds the chloroplast (AP000423.1, as `ChrC`) and the mitochondrion (BK010421.1, as `ChrM`), so organelle reads have somewhere to go other than their nuclear copies.
 - **`sample_worker.sh`** downloads one run from the AWS mirror of SRA, aligns it with `hisat2 --dta --max-intronlen 10000`, checks that the BAM holds every read, measures strandedness, and assembles with `stringtie --rf --conservative -x ChrC,ChrM`. Neither tool is given the annotation.
 - **`run_election.sh`** runs `TRaCE.pl` on an explicit, sorted list of GTFs with a fixed Perl hash seed, then the reruns, the recount and the summary tables.
+
+### Rerunning the election from a clone
+
+The repository holds everything `TRaCE.pl` read, so the ranking can be reproduced from a clone alone. From the top of the clone:
+
+```bash
+source config.sh
+mkdir -p tmp sw/trace
+curl -fsSL -o sw/trace/TRaCE.pl "https://raw.githubusercontent.com/warelab/trace/$TRACE_COMMIT/TRaCE.pl"
+cd stringtie
+PERL_HASH_SEED=0 PERL_PERTURB_KEYS=0 "$SYS_PERL" "$TRACE_PL" ../ref/TAIR12.trace.gff ../domains/pfam.all.tsv \
+    "$MIN_TPM" "$MIN_EVI_COV" "$MIN_REF_COV" "$MAX_AED" $(cat ../manifest/gtfs.core30.txt) \
+    > ../tmp/TAIR12_TRaCE_output.txt
+cmp ../tmp/TAIR12_TRaCE_output.txt ../results/TAIR12_TRaCE_output.txt && echo identical
+```
+
+- `TRaCE.pl` is run from inside `stringtie/` because it names each sample after the path it is given, and on an explicit list because every `.gtf` argument becomes a voter.
+- With `../domains/pfam.ipr.tsv` as the domain file, the same command gives `results/sensitivity/integrated_only.txt`. With `PERL_HASH_SEED` set to 1, 2 or 3 it gives `results/sensitivity/seed1.txt` to `seed3.txt`.
+- All five runs were checked on a fresh clone on 2026-11-24. Each output is identical, byte for byte, to its file in `results/`. One run takes a little over a minute and about 2.6 GB of memory.
+- `SYS_PERL` defaults to `/usr/local/bin/perl`, which was Perl 5.34.0 on the machine used. Set it in the environment before sourcing `config.sh` to use another perl. A different Perl build can walk its hashes in a different order, and the canonical transcript of six genes depends on that order.
+- `bin/run_election.sh` wraps this command and then rebuilds the tables in `results/`. It does not run in a clone as it stands: it also expects the `.ok` marker that `sample_worker.sh` leaves beside each assembly, the source GFF3 from TAIR, and the per-sample alignment logs.
 
 ### Comparison with the representative gene models
 

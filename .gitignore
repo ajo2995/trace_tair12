@@ -1,7 +1,8 @@
-# This repository tracks the pipeline, its documentation and its results.
-# Everything else in the working directory is an input, a third-party tool or
-# an intermediate file that the pipeline can make again (see README.md), so
-# the rule is: ignore everything, then name what is kept.
+# This repository tracks the pipeline, its documentation, its results and the
+# files TRaCE.pl was given. Everything else in the working directory is a raw
+# input, a third-party tool or an intermediate file that the pipeline can make
+# again (see README.md), so the rule is: ignore everything, then name what is
+# kept.
 /*
 !/.gitignore
 !/README.md
@@ -9,6 +10,20 @@
 !/bin/
 !/manifest/
 !/results/
+
+# The direct inputs to TRaCE.pl: the gene models as it reads them, the Pfam
+# table (and the InterPro-integrated subset used by one rerun), and one
+# StringTie assembly per sample.
+!/ref/
+/ref/*
+!/ref/TAIR12.trace.gff
+!/domains/
+/domains/*
+!/domains/pfam.all.tsv
+!/domains/pfam.ipr.tsv
+!/stringtie/
+/stringtie/*
+!/stringtie/*.gtf
 
 # Of the logs, only the list of installed conda packages is kept.
 !/logs/
