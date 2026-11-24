@@ -1,0 +1,23 @@
+# This repository tracks the pipeline, its documentation and its results.
+# Everything else in the working directory is an input, a third-party tool or
+# an intermediate file that the pipeline can make again (see README.md), so
+# the rule is: ignore everything, then name what is kept.
+/*
+!/.gitignore
+!/README.md
+!/config.sh
+!/bin/
+!/manifest/
+!/results/
+
+# Of the logs, only the list of installed conda packages is kept.
+!/logs/
+/logs/*
+!/logs/conda_env.txt
+
+# Working files for a database update, not output of the pipeline.
+/results/gene_stable_id.canonical_transcript_stable_id.txt
+/results/gsid.gid.tsid.tid.txt
+
+__pycache__/
+*.pyc

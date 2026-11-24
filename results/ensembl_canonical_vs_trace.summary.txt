@@ -1,0 +1,32 @@
+representatives taken from: results/ensembl_canonical_rules.canonical.tsv
+genes: 26867; single-transcript (representative is rank 1 by default): 21168; multi-transcript: 5699
+representative is TRaCE rank 1:              3028 (53.1%) of multi-transcript genes
+representative ranked below another transcript: 2671 (46.9%) of multi-transcript genes, 9.9% of all genes
+  its TRaCE rank: 2: 2480, 3: 155, 4: 25, 5+: 11; ranked last in its gene: 1632
+  in two-transcript genes: 1572 (41.1%); in genes with three or more: 1099 (58.6%)
+
+where they differ (2671 genes), canonical against representative:
+  spliced length, representative minus canonical (bp): median 81 (quartiles 13 to 147, max 8630)
+    same length: 12 (0.4%); 1-49: 751 (28.1%); 50-199: 1161 (43.5%); 200-499: 360 (13.5%); 500+: 123 (4.6%)
+    as a share of the representative's length (%): median 4.2 (quartiles 0.6 to 9.8, max 80.3)
+  same protein: 1056 (39.5%); different protein: 1615 (60.5%)
+    different protein: canonical longer in 0, shorter in 1601, same length in 14
+      canonical shorter by (aa): median 13 (quartiles 4 to 29, max 494)
+  Pfam coverage: canonical more in 342 (12.8%), equal in 2136 (80.0%), less in 193 (7.2%)
+  same intron chain, different ends: 1 (0.0%); different intron chain: 2670 (100.0%)
+    same protein: same intron chain 1, different 1055
+    different protein: same intron chain 0, different 1615
+  representative reads through an intron the canonical splices out: 960 (35.9%); the reverse: 80 (3.0%); both: 10
+    of those 960: same protein 196, different protein 764
+  exonic bases shared (intersection over union): median 0.935 (quartiles 0.854 to 0.979, max 1)
+  evidence, in the 2667 of these genes with at least one voting tissue:
+    canonical closer in more tissues: 2657 (99.6%); representative closer in more: 4 (0.1%); level: 6 (0.2%)
+    canonical closer in every voting tissue: 1466 (55.0%)
+    over all 63982 gene-tissue votes: canonical closer 93.2%, representative closer 4.0%, equal 2.8%
+    mean AED per gene, canonical:      median 0.0002 (quartiles 0 to 0.0046, max 0.5097)
+    mean AED per gene, representative: median 0.032 (quartiles 0.0119 to 0.0716, max 1)
+    difference, representative minus canonical: median 0.0262 (quartiles 0.0075 to 0.0616, max 1)
+    representative matches no assembled transcript in any tissue: 42 (1.6%)
+    tissues supporting each, median: canonical 28, representative 28
+  no voting tissue, so decided by domain and CDS length alone: 4
+  among the rounding-decided genes: 38

@@ -1,0 +1,20 @@
+samples	30	
+genes	26867	
+transcripts	36572	
+transcripts_with_pfam_domain	31503	
+multi_transcript_genes	5699	
+transcripts_in_multi_transcript_genes	15404	
+multi_genes_with_at_least_one_voting_sample	5517	96.8%
+multi_genes_with_no_voting_sample	182	3.2%
+silent_genes_never_overlapped_by_an_assembled_transcript	103	1.8%
+silent_genes_overlapped_in_at_least_one_sample	79	1.4%
+multi_genes_with_all_samples_voting	881	15.5%
+canonical_is_not_longest_cds	1601	28.1%
+canonical_is_not_longest_transcript	2930	51.4%
+canonical_is_neither_longest_cds_nor_longest_transcript	1376	24.1%
+canonical_is_not_dot1	3037	53.3%
+canonical_has_best_aed_in_majority_of_voting_samples	5041	88.5%
+canonical_unsupported_although_samples_voted	0	0.0%
+top_two_indistinguishable	3	0.1%
+multi_genes_with_intron_over_10000	1	0.0%
+canonical_differs_from_exact_recount	54	0.9%

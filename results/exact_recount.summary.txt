@@ -1,0 +1,25 @@
+multi-transcript genes recounted: 5699 (30 samples)
+full ranking differs from the exact recount: 60
+    explained by rounding of the 6/n vote sums: 55
+    other order-dependent effects:              5
+rank 1 (canonical) differs from the exact recount: 54
+    explained by rounding of the 6/n vote sums: 53
+    other order-dependent effects:              1
+by number of voting samples (genes / rank 1 differs):
+    n=7       85 / 3
+    n=10      55 / 1
+    n=11      71 / 1
+    n=13      69 / 1
+    n=15      68 / 2
+    n=17      81 / 2
+    n=18      86 / 3
+    n=19      94 / 1
+    n=20     103 / 4
+    n=21      84 / 1
+    n=22     122 / 1
+    n=23     138 / 1
+    n=25     166 / 2
+    n=26     226 / 1
+    n=27     355 / 7
+    n=28     477 / 11
+    n=30     881 / 12

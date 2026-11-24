@@ -1,0 +1,31 @@
+#sample	run	read_pairs	bases	organism_part	stage	sampling_site	description	sra_url
+S01_petal	ERR3333388	41713411	6340438472	petal	flower stage 15	not applicable	sepal	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333388/ERR3333388
+S02_sepal	ERR3333399	44640369	6785336088	sepal	flower stage 15	not applicable	petal	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333399/ERR3333399
+S03_stamen	ERR3333410	43784025	6655171800	stamen	flower stage 15	not applicable	stamen	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333410/ERR3333410
+S04_carpel	ERR3333421	42828437	6509922424	carpel	flower stage 15	not applicable	carpel	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333421/ERR3333421
+S05_silique	ERR3333432	36049005	5479448760	silique	silique stage 3	not applicable	silique	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333432/ERR3333432
+S06_seed	ERR3333440	50576840	7687679680	seed	embryo stage 10	not applicable	seed	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333440/ERR3333440
+S07_dry_seed	ERR3333441	41916346	6371284592	seed	dry seed stage	not applicable	seed	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333441/ERR3333441
+S08_imbibed_seed	ERR3333442	40312716	6127532832	seed	seed imbibition stage	not applicable	seed	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333442/ERR3333442
+S09_pollen	ERR3333443	31843050	4840143600	pollen	flower stage 15	not applicable	pollen	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333443/ERR3333443
+S10_stem_node	ERR3333389	34424983	5232597416	stem node	adult	first node	stem, 1st node	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333389/ERR3333389
+S11_stem_internode	ERR3333390	38318666	5824437232	stem internode	adult	second internode	stem, 2nd internode	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333390/ERR3333390
+S12_cauline_leaf	ERR3333391	45325673	6889502296	cauline leaf	adult	not applicable	cauline leaf	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333391/ERR3333391
+S13_leaf_distal	ERR3333392	39421134	5992012368	rosette leaf	adult	rosette leaf 7 distal part	rosette leaf 7, distal part	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333392/ERR3333392
+S14_leaf_proximal	ERR3333393	38247169	5813569688	rosette leaf	adult	rosette leaf 7 proximal part	rosette leaf 7, proximal part	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333393/ERR3333393
+S15_petiole	ERR3333394	37010320	5625568640	petiole	adult	rosette leaf 7 petiole	rosette leaf 7, petiole	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333394/ERR3333394
+S16_senescent_leaf	ERR3333395	36805774	5594477648	adult vascular leaf	adult	not applicable	senescent leaf	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333395/ERR3333395
+S17_root	ERR3333396	37613119	5717194088	root	adult	not applicable	root	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333396/ERR3333396
+S18_pedicel	ERR3333397	37562992	5709574784	flower pedicel	flower stage 15	not applicable	flower pedicel	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333397/ERR3333397
+S19_flower	ERR3333398	31172567	4738230184	flower	flower stage 15	not applicable	flower	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333398/ERR3333398
+S20_silique_septum	ERR3333400	42503904	6460593408	fruit septum	adult	not applicable	silique septum	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333400/ERR3333400
+S21_silique_valves	ERR3333401	40620986	6174389872	fruit valve	adult	not applicable	silique valves	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333401/ERR3333401
+S22_egg_cell_like_callus	ERR3333402	39106977	5944260504	plant callus	callus	not applicable	egg-cell like callus	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333402/ERR3333402
+S23_callus	ERR3333403	39291535	5972313320	plant callus	callus	not applicable	plant callus	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333403/ERR3333403
+S24_cell_culture_3d	ERR3333404	36089995	5485679240	root	cell culture	not applicable	root cell culture	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333404/ERR3333404
+S25_cell_culture_10d	ERR3333405	36142345	5493636440	root	cell culture	not applicable	root cell culture	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333405/ERR3333405
+S26_cotyledon	ERR3333406	36417647	5535482344	cotyledon	seedling	not applicable	cotyledon	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333406/ERR3333406
+S27_hypocotyl	ERR3333407	32820143	4988661736	hypocotyl	seedling	not applicable	hypocotyl	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333407/ERR3333407
+S28_root_tip	ERR3333408	32498412	4939758624	root tip	seedling	not applicable	root tip	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333408/ERR3333408
+S29_root_upper_zone	ERR3333409	32933446	5005883792	root tip	seedling	upper zone	root upper zone	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333409/ERR3333409
+S30_shoot_apex	ERR3333411	36592681	5562087512	mixed shoot apical meristem, cotyledon and first leaves	seedling	not applicable	shoot apical meristem, cotyledons and first leaves	https://sra-pub-run-odp.s3.amazonaws.com/sra/ERR3333411/ERR3333411
